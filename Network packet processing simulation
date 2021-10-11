@@ -1,0 +1,25 @@
+# Network Packet Processing Simulation
+ i = i th packet
+ Ai = Arriving time of packet i
+ Pi = Processing time of packet i
+ S = the size of buffer(define by yourself, if packet's number>s, will drop the packet)
+
+#input
+1st line: S(size of buffer), n(the total number of packets)
+ith line: Ai, Pi
+
+#output
+i-1 lines: Time of processor begin processing this packet/ -1 if dropped
+
+#
+create a list(finsh time of the previous one is the begining time of this one)
+- Ai
+1. must be ascending or equal(0,0,1,1,2,3,4)
+2. if equal, should consider about the buffer size
+  if remaining size >= number of same Ai: ok
+  else: next(number of same Ai - remaining size) will be dropped, remainding size of same is ok
+        next n numbers will append -1
+- Pi
+1. finish_time = []
+2. finsh_time.append (finish_time[-1](the last one)+=Pi)
+3. -1 if be dropped

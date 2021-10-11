@@ -1,0 +1,39 @@
+import sys
+
+stdin = sys.stdin.read().split()
+n = stdin[0]
+
+inpiu_integer = [None]*n
+for i in stdin[1:]:
+   if i.isdigit():
+      inpiu_integer[i] == int(i)
+
+inpiu_name = []
+for i in stdin:
+    if i == 'push'or'pop'or'max':
+        inpiu_name.append(i)
+# n=5
+# inpiu_name = 'push','push','max','pop','max'
+# inpiu_integer = 1,2,None,None,None,None
+
+
+def push(list,x):
+    list.append(x)
+    return list
+
+def pop(list):
+    list.pop()
+    return list
+
+def getmax(list):
+    x = max(list)
+    return x
+
+output = []
+for i in range(len(inpiu_name)):
+    if inpiu_name[i] == 'push':
+        push(output,inpiu_integer[i])
+    if inpiu_name[i] == 'pop':
+        pop(output)
+    if inpiu_name[i] == 'max':
+        print(getmax(output))

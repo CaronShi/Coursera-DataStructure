@@ -1,0 +1,23 @@
+class employee(object):
+
+    raise_amount = 1.04    #class variables
+
+    def __init__(self,first,last,pay):
+        #attributes
+        employee.first = first
+        employee.last = last
+        employee.pay = pay
+        employee.email = first + last +'@company.com'
+    #methods
+    def fullname(self):
+        return self.first,self.last
+
+    def raisesalary(self):
+        return self.pay * self.raise_amount
+
+e_1 = employee('cheng','shi',50000)
+
+e_1.raise_amount = 1.06     #instance variables
+
+print(e_1.raisesalary())
+# = employee.fullname(e_1)

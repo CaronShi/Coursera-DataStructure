@@ -1,0 +1,36 @@
+#input
+s = 1
+n = 2
+packet1 = 0,1
+packet2 = 1,1
+packet3 = 1,1
+arriving_time = packet1[0],packet2[0],packet3[0]
+processing_time = packet1[1],packet2[1],packet3[1]
+
+#calcuate the finish_time based on processing_time
+def finish():
+    finish_time = [arriving_time[0]]
+    for i in processing_time:
+        next_time = finish_time[-1]+i
+        finish_time.append(next_time)
+        #finish_time.remove(finish_time[0])
+    return finish_time
+#print(finish())
+
+#arriving_time
+def buffer(size):
+    count_same_i = 1 #for counting the packets with the same arriving_time
+    for i in range(len(arriving_time)-1):#0,1
+        if arriving_time[i] == arriving_time[i+1]:
+            count_same_i +=1
+    return count_same_i
+
+    if count_same_i>size:
+        finish()
+        dropped = count_same_i - size #the number need drop
+        for i in finish_time[-dropped:]:
+            finish_time.append(-1)
+    else:
+        finish()
+    return finish()
+print(buffer(s))

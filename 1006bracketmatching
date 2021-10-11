@@ -1,0 +1,47 @@
+
+#bracket = str(input("enter the input"))
+bracket = str('{foo(bar[i);}')
+set = '[',']','{','}','(',')'
+
+#extract all brackets
+brac_list = []
+for i in bracket:
+    if i in set:
+        brac_list.append(i)
+print(brac_list)
+
+#match every opening brackets with the ending ones
+
+
+#remove every pair, and if the outlist = empty, then print "success"
+def findbracket(outlist):
+    opening_brackets ='(','{','['
+    ending_brackets = ')','}',']'
+    stack = []
+    for i in outlist:#([{}])
+        if i in opening_brackets:
+            stack.append(i)
+        else:
+            if len (stack) == 0:
+                return False
+            top = stack.pop()
+            if (top == '(' and i != ')') or (top == '[' and i != ']') or (top == '{' and i !='}'):
+                return False
+#find the index
+    if len (stack) != 0:
+        indexlist = []
+        otherindexlist = []
+        for i in stack:
+            if i in ending_brackets:
+                indexlist.append(i)
+                return indexlist[0]
+            else:
+                otherindexlist.append(i)
+                return indexlist[0]
+
+    return 'success'
+
+print(findbracket(brac_list))
+
+
+#if not, print (first opening or ending bracket)
